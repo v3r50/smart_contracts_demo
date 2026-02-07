@@ -4,8 +4,9 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
+import "@openzeppelin/contracts/utils/Pausable.sol";
 
-contract Token20 is ERC20, ERC20Capped, Ownable {
+contract Token20 is ERC20, ERC20Capped, Ownable, Pausable {
 
     constructor(uint256 cap_, uint256 initialSupply) 
         ERC20("LexToken", "LEX") 
@@ -20,9 +21,18 @@ contract Token20 is ERC20, ERC20Capped, Ownable {
     }
 
     function _update(address from, address to, uint256 value)
-    internal
-    override(ERC20, ERC20Capped)
+        internal
+        override(ERC20, ERC20Capped)
+        whenNotPaused
     {
         super._update(from, to, value);
     }   
+
+    function pause() external onlyOwner {
+        _pause();
+    }
+
+    function unpause() external onlyOwner {
+        _unpause();
+    }
 }
