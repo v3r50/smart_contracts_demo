@@ -8,6 +8,8 @@ import "@openzeppelin/contracts/utils/Pausable.sol";
 
 contract Token20 is ERC20, ERC20Capped, Ownable, Pausable {
 
+    event Minted(address indexed to, uint256 amount);
+
     constructor(uint256 cap_, uint256 initialSupply) 
         ERC20("LexToken", "LEX") 
         ERC20Capped(cap_)
@@ -17,7 +19,8 @@ contract Token20 is ERC20, ERC20Capped, Ownable, Pausable {
         }
 
     function mint(address to, uint256 amount) external onlyOwner {
-    _mint(to, amount);
+        _mint(to, amount);
+        emit Minted(to, amount);
     }
 
     function _update(address from, address to, uint256 value)
