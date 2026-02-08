@@ -8,7 +8,7 @@ contract Token721 is ERC721, Ownable {
     constructor() ERC721("LexNFT", "LEX") Ownable(msg.sender) {}
 
     event Minted(address indexed to, uint256 indexed tokenId);
-    
+
     uint256 private _nextTokenId = 1;
 
     function mint(address to) external onlyOwner {
@@ -18,5 +18,15 @@ contract Token721 is ERC721, Ownable {
         _safeMint(to, tokenId);
 
         emit Minted(to, tokenId);
+    }
+
+    string private _baseTokenURI;
+    
+    function setBaseURI(string calldata newBaseURI) external onlyOwner {
+        _baseTokenURI = newBaseURI;
+    }
+
+    function _baseURI() internal view override returns (string memory) {
+        return _baseTokenURI;
     }
 }
