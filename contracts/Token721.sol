@@ -38,4 +38,17 @@ contract Token721 is ERC721, Ownable, Pausable {
     function unpause() external onlyOwner {
         _unpause();
     }
+
+    // totalSupply == emitted (existing + burnt)
+    function totalSupply() external view returns (uint256) {
+        return _nextTokenId - 1;
+    }
+
+    function burn(uint256 tokenId) external {
+        require(
+            ownerOf(tokenId) == msg.sender,
+            "Not token owner"
+        );
+        _burn(tokenId);
+    }
 }
