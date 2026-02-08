@@ -1,13 +1,24 @@
-# Sample Hardhat Project
+## ERC-20
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+Kontrakt tokena ERC-20 został poprawnie zdeplojowany na testnecie.
+Adres kontraktu:
+`0xdf862917DC3083c889637CeC919D84318886BB55`
 
-Try running some of the following tasks:
+Kontrakt jest zweryfikowany i możliwy do sprawdzenia w eksploratorze blockchaina (Etherscan):
+[Etherscan ERC20](https://sepolia.etherscan.io/address/0xdf862917DC3083c889637CeC919D84318886BB55)
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+## ERC-721
+
+Kontrakt tokena NFT (ERC-721) został poprawnie zdeplojowany na testnecie.
+Adres kontraktu:
+`0x772d0076be50D6E2dD94EAa859d38e8f77D82315`
+
+Kontrakt jest zweryfikowany i możliwy do sprawdzenia w eksploratorze blockchaina (Etherscan):
+[Etherscan ERC721](https://sepolia.etherscan.io/address/0x772d0076be50D6E2dD94EAa859d38e8f77D82315)
+
+## Informacje dodatkowe
+
+Repozytorium zawiera:
+- kod obu kontraktów (ERC-20 oraz ERC-721),
+- minimalne testy smart kontraktów,
+- skrypty deploymentu na testnet.
